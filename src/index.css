@@ -69,3 +69,12 @@ button:focus-visible {
 
 
 @import "tailwindcss";
+
+
+
+/* .star-bg {
+  background:
+    radial-gradient(white 1px, transparent 1px) 0 0/2px 2px,
+    radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px) 0 0/3px 3px,
+    #000814;
+} */
