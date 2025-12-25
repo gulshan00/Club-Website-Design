@@ -1,63 +1,95 @@
-
-import Layout from '../components/layout/Layout';
+import Layout from "../components/layout/Layout";
+import { useState } from "react";
+import podcastImage from "../assets/banner.jpg";
+import podcastImage1 from "../assets/banner1.jpg";
 
 const Podcast = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const youtubeVideoId = "4adZ7AguVcw";
+
   return (
     <Layout>
-      <section className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            OUR PODCASTS
-          </span>
+      {/* Header */}
+      <div className="relative flex items-center justify-center pt-16 md:pt-24">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wider text-center">
+          PODCASTS
         </h1>
-        
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Example Podcast Card */}
-          <div className="bg-gradient-to-br from-gray-900/50 to-blue-900/30 rounded-2xl p-6 border border-cyan-500/20">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+      </div>
+
+      {/* Main Section */}
+      <section className="text-white py-10 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Podcast 1 — FULL WIDTH */}
+          <div
+            className="relative cursor-pointer group mb-10"
+            onClick={() => setIsVideoOpen(true)}
+          >
+            <img
+              src={podcastImage}
+              alt="Podcast"
+              className="w-full rounded-xl border border-gray-700 object-cover aspect-video"
+            />
+
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-1">Episode 1: The Big Bang Theory</h3>
-                <p className="text-gray-400 text-sm">45 min • Released Dec 1, 2024</p>
-              </div>
-            </div>
-            <p className="text-gray-300 mt-4 mb-6">
-              In our first episode, we explore the origins of the universe and what science tells us about the Big Bang.
-            </p>
-            <div className="flex gap-4">
-              <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                Play Now
-              </button>
-              <button className="px-6 py-2 border border-cyan-500 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-colors">
-                Download
-              </button>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-gray-900/50 to-purple-900/30 rounded-2xl p-6 border border-purple-500/20">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+          {/* Podcast 2 — FULL WIDTH SECOND ROW */}
+          <div
+            className="relative cursor-pointer group"
+            onClick={() => setIsVideoOpen(true)}
+          >
+            <img
+              src={podcastImage1}
+              alt="Podcast 2"
+              className="w-full rounded-xl border border-gray-700 object-cover aspect-video"
+            />
+
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-1">Episode 2: Black Holes Explained</h3>
-                <p className="text-gray-400 text-sm">52 min • Coming Soon</p>
-              </div>
             </div>
-            <p className="text-gray-300 mt-4">
-              Dive into the mysterious world of black holes with our special guest astrophysicist.
-            </p>
           </div>
+
         </div>
       </section>
+
+
+      {/* Popup Player */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center px-3 sm:px-6">
+          <div className="relative w-full max-w-5xl">
+
+            {/* Close button */}
+            <button
+              onClick={() => setIsVideoOpen(false)}
+              className="absolute -top-10 right-0 text-white text-3xl hover:text-red-500"
+            >
+              ✕
+            </button>
+
+            {/* Responsive 16:9 YouTube */}
+            <div className="relative pt-[56.25%]">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-xl"
+                src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

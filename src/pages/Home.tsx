@@ -1,46 +1,12 @@
-import Navbar from "../components/Navbar";
+
 import { useState, type SetStateAction } from "react";
 import recentBg from "../assets/recent.jpg";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import { Mail, MessageCircle } from "lucide-react";
+import Layout from "../components/layout/Layout";
 
-type Star = {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-  bright?: boolean;
-};
 
 export default function Home() {
-  // ⭐ generate stars ONCE safely (no effects, no warnings)
-  const [stars] = useState<Star[]>(() => {
-    const small = Array.from({ length: 150 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 1.5 + 0.5,
-      opacity: Math.random() * 0.6 + 0.2,
-      bright: false,
-    }));
-
-    const bright = Array.from({ length: 30 }).map((_, i) => ({
-      id: 1000 + i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.8 + 0.2,
-      bright: true,
-    }));
-
-    return [...small, ...bright];
-  });
-
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
+const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
       id: 1,
@@ -82,33 +48,10 @@ export default function Home() {
 
 
   return (
+     <Layout>
     <div className="min-h-screen w-full text-white relative overflow-hidden">
-      {/* Space Background */}
-      <div className="fixed inset-0 bg-[#0A0A14] z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A14] via-[#0C0C1A] to-[#0A0A14]" />
-
-        {stars.map((star) => (
-          <div
-            key={star.id}
-            className="absolute rounded-full bg-white"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              opacity: star.opacity,
-              boxShadow: star.bright
-                ? `0 0 ${star.size * 3}px rgba(255,255,255,${star.opacity})`
-                : "none",
-            }}
-          />
-        ))}
-      </div>
-
       {/* Main page content */}
       <div className="relative z-10">
-        <Navbar />
-        {/* Hero Section */}
         <section className=" flex items-center justify-center px-6 pt-16">
           <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center">
             {/* Left Text Content */}
@@ -285,41 +228,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <footer className="text-white">
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            {/* Quote */}
-            <h3 className="text-center text-sm md:text-lg font-extrabold tracking-wide mb-10">
-              “ASTRONOMY COMPELS THE SOUL TO LOOK UPWARDS AND LEADS US FROM THIS WORLD TO ANOTHER”
-            </h3>
-
-            {/* Center navigation links */}
-            <ul className="flex flex-wrap justify-center gap-8 text-sm mb-10">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/">Experts</Link></li>
-              <li><Link to="/about">About us</Link></li>
-              <li><Link to="/podcast">Podcasts</Link></li>
-              <li><Link to="/">Contacts</Link></li>
-            </ul>
-
-            {/* Bottom row */}
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
-
-              {/* Left chat */}
-              <div className="flex items-center gap-2">
-                <MessageCircle size={16} className="opacity-80" />
-                <span>Let’s chat</span>
-              </div>
-
-              {/* Right email */}
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="opacity-80" />
-                <span>info@logoipsum.com</span>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
+    </Layout>
   );
 }
 
