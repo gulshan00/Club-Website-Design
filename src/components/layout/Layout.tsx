@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 type Star = {
   id: number;
@@ -57,7 +58,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           />
         ))}
       </div>
-
+<ScrollToTop/>
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
@@ -69,3 +70,4 @@ const Layout = ({ children }: { children: ReactNode }) => {
 };
 
 export default Layout;
+

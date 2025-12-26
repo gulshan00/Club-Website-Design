@@ -7,6 +7,33 @@ const Podcast = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const youtubeVideoId = "4adZ7AguVcw";
 
+  const podcasts = [
+    {
+      id: "01",
+      name: "PODCAST NAME",
+      tag: "#HASHTAG",
+      img: "https://picsum.photos/seed/podcast1/300/300",
+    },
+    {
+      id: "02",
+      name: "PODCAST NAME",
+      tag: "#HASHTAG",
+      img: "https://picsum.photos/seed/podcast2/300/300",
+    },
+    {
+      id: "03",
+      name: "PODCAST NAME",
+      tag: "#HASHTAG",
+      img: "https://picsum.photos/seed/podcast3/300/300",
+    },
+    {
+      id: "04",
+      name: "PODCAST NAME",
+      tag: "#HASHTAG",
+      img: "https://picsum.photos/seed/podcast4/300/300",
+    },
+  ];
+
   return (
     <Layout>
       {/* Header */}
@@ -90,6 +117,58 @@ const Podcast = () => {
           </div>
         </div>
       )}
+
+      <section className="w-full min-h-screen  text-white px-6 py-16">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+              PODCAST OF
+              <br />
+              THE WEEK
+            </h1>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <p className="text-gray-200">
+              Lorem ipsum dolor sit amet consectetur. Aliquet scelerisque magna
+              nulla euismod sed. Adipiscing placerat quisque eu rhoncus.
+            </p>
+
+            <button className="w-fit border border-white px-5 py-2 rounded-xl flex items-center gap-2 hover:bg-white hover:text-black transition">
+              Learn More →
+            </button>
+          </div>
+        </div>
+
+       
+
+        {/* Podcast List */}
+        <div className="grid md:grid-cols-2 justify-center gap-10 mt-10">
+
+          {podcasts.map((item) => (
+            <div key={item.id} className="flex items-center gap-5">
+              <h2 className="text-3xl font-black">{item.id}.</h2>
+
+              <img
+                src={item.img}
+                alt={item.name}
+                className="w-24 h-24 object-cover rounded-xl"
+              />
+
+              <div>
+                <p className="font-bold">{item.name}</p>
+                <p className="text-sm text-gray-300">{item.tag}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
     </Layout>
   );
 };

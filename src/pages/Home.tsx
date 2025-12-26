@@ -155,10 +155,6 @@ const [currentSlide, setCurrentSlide] = useState(0);
                       alt={slide.title}
                       className="w-full h-96 object-cover"
                     />
-                    {/* <div className="p-6">
-                      <h3 className="text-xl font-bold">{slide.title}</h3>
-                      <p className="text-gray-300 mt-2">{slide.description}</p>
-                    </div> */}
                   </div>
                 ))}
               </div>

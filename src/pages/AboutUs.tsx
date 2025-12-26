@@ -1,51 +1,94 @@
 
 import Layout from '../components/layout/Layout';
+import logo from "../assets/logo.png";
+import moon from "../assets/moon.png";
+import aboutImage from "../assets/aboutimage.jpg";
+import person1 from "../assets/aboutimage.jpg";
+import person2 from "../assets/aboutimage.jpg";
+import person3 from "../assets/aboutimage.jpg";
+import person4 from "../assets/aboutimage.jpg";
 
 const AboutUs = () => {
+  const team = [
+    { name: "NAME", post: "POST", img: person1 },
+    { name: "NAME", post: "POST", img: person2 },
+    { name: "NAME", post: "POST", img: person3 },
+    { name: "NAME", post: "POST", img: person4 },
+    { name: "NAME", post: "POST", img: person1 },
+    { name: "NAME", post: "POST", img: person2 },
+    { name: "NAME", post: "POST", img: person3 },
+    { name: "NAME", post: "POST", img: person4 },
+    { name: "NAME", post: "POST", img: person1 },
+    { name: "NAME", post: "POST", img: person2 },
+    { name: "NAME", post: "POST", img: person3 },
+    { name: "NAME", post: "POST", img: person4 },
+    { name: "NAME", post: "POST", img: person1 },
+    { name: "NAME", post: "POST", img: person2 },
+    { name: "NAME", post: "POST", img: person3 },
+  ];
   return (
     <Layout>
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              ABOUT DHRUVA
-            </span>
-          </h1>
-          
-          <div className="bg-gradient-to-br from-gray-900/50 to-blue-900/30 rounded-2xl p-8 border border-cyan-500/20 mb-8">
-            <h2 className="text-2xl font-bold mb-4 text-cyan-300">Our Mission</h2>
-            <p className="text-gray-300 mb-6">
-              Dhruva is a college club dedicated to exploring the mysteries of the universe. 
-              We believe in the power of collective learning and sharing knowledge about space, 
-              cosmos, and everything beyond our planet.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-gray-900/50 to-purple-900/30 rounded-2xl p-6 border border-purple-500/20">
-              <h3 className="text-xl font-bold mb-4 text-cyan-300">What We Do</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li>• Weekly space discussions and talks</li>
-                <li>• Astrophotography sessions</li>
-                <li>• Telescope observations</li>
-                <li>• Podcast recordings</li>
-                <li>• Collaboration with astronomy departments</li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-gray-900/50 to-pink-900/30 rounded-2xl p-6 border border-pink-500/20">
-              <h3 className="text-xl font-bold mb-4 text-cyan-300">Join Us</h3>
-              <p className="text-gray-300 mb-4">
-                Whether you're a seasoned astronomer or just starting your cosmic journey, 
-                Dhruva welcomes all space enthusiasts.
-              </p>
-              <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                Become a Member
-              </button>
-            </div>
-          </div>
+      <div className="min-h-screen w-full  text-white">
+        <div className="max-w-7xl mx-auto px-6 pt-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold">ABOUT US.</h1>
         </div>
-      </section>
+        <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10 relative">
+          <div className="flex justify-center md:justify-start">
+            <img src={logo} className="w-52 md:w-64" alt="logo" />
+          </div>
+          <div className="relative">
+            <p className="text-sm md:text-base leading-relaxed text-gray-200">
+              Lorem ipsum dolor sit amet consectetur. Diam donec egestas est leo
+              malesuada massa quisque vitae at. Aliquet scelerisque magna nulla
+              aenean euismod sed. Adipiscing placerat quisque eu rhoncus consequat.
+              Lorem ipsum dolor sit amet consectetur. Diam donec egestas est leo
+              malesuada massa quisque vitae at. Aliquet scelerisque magna nulla
+              aenean euismod sed. Adipiscing placerat quisque eu rhoncus consequat.
+              Lorem ipsum dolor sit amet consectetur. Diam donec egestas est leo
+              malesuada massa quisque vitae at. Aliquet scelerisque magna nulla
+              aenean euismod sed. Adipiscing placerat quisque eu rhoncus consequat.
+            </p>
+            <img
+              src={moon}
+              className="hidden md:block w-40 absolute -right-10 top-10"
+              alt="moon"
+            />
+          </div>
+        </section>
+
+        {/* ---------- FULL WIDTH GROUP IMAGE ---------- */}
+        <div className="w-full mt-4">
+          <img
+            src={aboutImage}
+            className="w-full max-h-[450px] object-cover"
+            alt="about group"
+          />
+        </div>
+
+        {/* ---------- TEAM GRID SECTION ---------- */}
+        <section className="max-w-7xl mx-auto px-6 py-12">
+          <h2 className="text-center text-2xl md:text-3xl font-bold mb-8">
+            TEAM LEADERS OF OUR CLUB
+          </h2>
+
+         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+  {team.map((member, index) => (
+    <div key={index} className="text-center">
+      <img
+        src={member.img}
+        alt={member.name}
+        className="w-[200px] h-[200px] object-cover rounded-xl mb-3 mx-auto"
+      />
+
+      <p className="font-bold text-sm">{member.name}</p>
+      <p className="text-xs text-gray-300">{member.post}</p>
+    </div>
+  ))}
+</div>
+
+        </section>
+
+      </div>
     </Layout>
   );
 };
