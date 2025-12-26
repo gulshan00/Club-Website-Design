@@ -13,7 +13,7 @@ const Footer = () => {
             {/* Center navigation links */}
             <ul className="flex flex-wrap justify-center gap-8 text-sm mb-10">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/">Experts</Link></li>
+              <li><Link to="/events">Experts</Link></li>
               <li><Link to="/about">About us</Link></li>
               <li><Link to="/podcast">Podcasts</Link></li>
               <li><Link to="/">Contacts</Link></li>
