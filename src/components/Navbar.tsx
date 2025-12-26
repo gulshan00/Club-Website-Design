@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo11.png";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,13 +25,13 @@ const Navbar = () => {
 
             {/* LOGO LEFT */}
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
-             <h1 className="text-white font-extrabold text-2xl">
-            DHRUVA
-            <span className="block text-[10px] tracking-widest">
-              ASTRONOMY CLUB
-            </span>
-          </h1>
+              <img
+                src={logo}
+                alt="Dhruva Astronomy Club"
+                className="h-10 sm:h-12 object-contain"
+              />
             </Link>
+
 
             {/* DESKTOP LINKS */}
             <div className="hidden md:flex items-center gap-8">
@@ -37,11 +39,10 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`transition ${
-                    isActive(link.path)
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white"
-                  }`}
+                  className={`transition ${isActive(link.path)
+                    ? "text-white"
+                    : "text-gray-300 hover:text-white"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -69,18 +70,17 @@ const Navbar = () => {
 
       {/* LEFT SLIDE-IN MENU */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-72 bg-gradient-to-b from-black to-gray-900 border-r border-white/10 transform transition-transform duration-300 md:hidden ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 z-50 h-full w-72 bg-gradient-to-b from-black to-gray-900 border-r border-white/10 transform transition-transform duration-300 md:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
-        <div className="p-6">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-            DHRUVA
-          </h2>
-          <p className="text-gray-400 text-sm mt-1">
-            Exploring the cosmos together
-          </p>
+        <div className="p-6 flex items-center gap-3">
+          <img
+            src={logo}
+            alt="Dhruva Astronomy Club"
+            className="h-12 object-contain"
+          />
         </div>
+
 
         <ul className="px-4 space-y-3">
           {navLinks.map((link) => (
@@ -88,11 +88,10 @@ const Navbar = () => {
               <Link
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg transition ${
-                  isActive(link.path)
-                    ? "bg-cyan-500/10 text-gray-300 "
-                    : "text-gray-300 hover:bg-gray-800/60 hover:text-white"
-                }`}
+                className={`block px-4 py-3 rounded-lg transition ${isActive(link.path)
+                  ? "bg-cyan-500/10 text-gray-300 "
+                  : "text-gray-300 hover:bg-gray-800/60 hover:text-white"
+                  }`}
               >
                 {link.label}
               </Link>
